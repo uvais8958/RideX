@@ -166,3 +166,98 @@ curl -X POST http://localhost:4000/users/login \
   "message": "Invalid email or password"
 }
 ```
+
+
+## User Profile Endpoint
+
+### Endpoint
+`GET /users/profile`
+
+### Description
+This endpoint returns the authenticated user's profile information. It requires a valid JWT token passed either in the cookie `token` or in the `Authorization` header as a Bearer token.
+
+### Request Method
+`GET`
+
+### Status Codes
+- `200 OK` — User profile returned successfully.
+- `401 Unauthorized` — Token is missing, invalid, or blacklisted.
+- `500 Internal Server Error` — Server error while processing the request.
+
+### Authentication
+Use a valid JWT token in either of these formats:
+
+```http
+Cookie: token=YOUR_JWT_TOKEN
+```
+
+```http
+Authorization: Bearer YOUR_JWT_TOKEN
+```
+
+### Example Request
+```bash
+curl -X GET http://localhost:4000/users/profile \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN"
+```
+
+### Example Success Response
+```json
+{
+  "_id": "64c8f7d3c9f1a2b3d4e5f6g7",
+  "fullname": {
+    "firstname": "John",
+    "lastname": "Doe"
+  },
+  "email": "john.doe@example.com",
+  "password": "hashed_password_here",
+  "socketId": null
+}
+```
+
+### Example Error Response
+```json
+{
+  "message": "Unauthorized"
+}
+```
+
+
+## User Logout Endpoint
+
+### Endpoint
+`GET /users/logout`
+
+### Description
+This endpoint logs the authenticated user out by clearing the cookie and storing the current token in the blacklist so it cannot be reused.
+
+### Request Method
+`GET`
+
+### Status Codes
+- `200 OK` — User successfully logged out.
+- `401 Unauthorized` — Token is missing or invalid.
+- `500 Internal Server Error` — Server error while processing the request.
+
+### Authentication
+The user must be logged in and send a valid JWT token in either cookie or Authorization header.
+
+### Example Request
+```bash
+curl -X GET http://localhost:4000/users/logout \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN"
+```
+
+### Example Success Response
+```json
+{
+  "message": "Logged out"
+}
+```
+
+### Example Error Response
+```json
+{
+  "message": "Unauthorized"
+}
+```
