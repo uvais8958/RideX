@@ -4,7 +4,7 @@ dotenv.config();
 const express=require('express');
 const cors=require('cors');
 const app=express();
-const userRoutes=require("./routes/user.route");
+const userRoutes=require("./routes/user.route.js");
 
 app.use(cors());
 app.use(express.json());
@@ -16,5 +16,5 @@ app.get("/",(req,res)=>{
     res.send("hellow world");
 });
 
-app.use('users/',userRoutes);
+app.use('/users',userRoutes);
 module.exports=app;
