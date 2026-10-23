@@ -4,7 +4,8 @@ dotenv.config();
 const express=require('express');
 const cors=require('cors');
 const app=express();
-const userRoutes=require("./routes/user.route.js");
+const userRoutes=require("./routes/user.route.js")
+const captainRoutes=require("./routes/captain.routes.js");
 const cookieParser=require('cookie-parser');
 
 app.use(cors());
@@ -18,4 +19,5 @@ app.get("/",(req,res)=>{
 });
 
 app.use('/users',userRoutes);
+app.use('/captains',captainRoutes);
 module.exports=app;

@@ -261,3 +261,128 @@ curl -X GET http://localhost:4000/users/logout \
   "message": "Unauthorized"
 }
 ```
+
+## Captain Registration Endpoint
+
+### Endpoint
+`POST /captains/register`
+
+### Description
+This endpoint registers a new captain in the system. It validates the incoming request data, hashes the password, creates a captain record with vehicle details, and returns the captain details along with a JWT token.
+
+### Request Method
+`POST`
+
+### Status Codes
+- `201 Created` — Captain successfully registered.
+- `400 Bad Request` — Validation failed or required fields are missing/invalid.
+- `500 Internal Server Error` — Server error while processing the request.
+
+### Request Body Format
+The request body must be a JSON object in the following format:
+
+```json
+{
+  "fullname": {
+   "firstname": "Vatsal",
+      "lastname": "Chaturvedi"
+  },
+     "email": "vatsal123@gmail.com",
+    "password": "vatsal212",
+    "status": "inactive",
+    "vehicle": {
+      "color": "black",
+      "plate": "UP 24 AZ 6204",
+      "capacity": "1",
+      "vehicleType": "car"
+  }
+}
+```
+
+### Required Data
+- `fullname.firstname` — Required
+  - Minimum length: `3` characters
+  - Example: `"Rahul"`
+- `fullname.lastname` — Optional but recommended
+  - Minimum length: `3` characters if provided
+  - Example: `"Sharma"`
+- `email` — Required
+  - Must be a valid email address
+  - Example: `"rahul@example.com"`
+- `password` — Required
+  - Minimum length: `6` characters
+  - Example: `"123456"`
+- `vehicle.color` — Required
+  - Minimum length: `3` characters
+- `vehicle.plate` — Required
+  - Minimum length: `3` characters
+- `vehicle.capacity` — Required
+  - Must be an integer greater than or equal to `1`
+- `vehicle.vehicleType` — Required
+  - Allowed values: `car`, `motorcycle`, `auto`
+
+### Validation Rules
+- `email` must be a valid email format.
+- `fullname.firstname` must be at least 3 characters long.
+- `password` must be at least 6 characters long.
+- `vehicle.color` must be at least 3 characters long.
+- `vehicle.plate` must be at least 3 characters long.
+- `vehicle.capacity` must be at least `1`.
+- `vehicle.vehicleType` must be one of `car`, `motorcycle`, or `auto`.
+
+### Example Request
+```bash
+curl -X POST http://localhost:4000/captains/register \
+  -H "Content-Type: application/json" \
+  -d '{
+    "fullname": {
+      "firstname": "Rahul",
+      "lastname": "Sharma"
+    },
+    "email": "rahul@example.com",
+    "password": "123456",
+    "vehicle": {
+      "color": "Black",
+      "plate": "DL01AB1234",
+      "capacity": 4,
+      "vehicleType": "car"
+    }
+  }'
+```
+
+### Example Success Response
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YWRhZjc1NDQ4YWQyMDQxMTYzYWY5NjciLCJpYXQiOjE3OTI3MzUwNjAsImV4cCI6MTc5MjgyMTQ2MH0.GTJH1izoi1atdOHkM7rlkxkmZkGlMlfW6eTupdYuJY0",
+  "captain": {
+    "fullname": {
+      "firstname": "Vatsal",
+      "lastname": "Chaturvedi"
+    },
+    "email": "vatsal123@gmail.com",
+    "password": "$2b$10$4Il2lAFLur57SD.qT163f.0lbaTp1MUx47TZHIcUVkwPALx8XLh1S",
+    "status": "inactive",
+    "vehicle": {
+      "color": "black",
+      "plate": "UP 24 AZ 6204",
+      "capacity": "1",
+      "vehicleType": "car"
+    },
+    "_id": "6adaf75448ad2041163af967",
+    "__v": 0
+  }
+}
+```
+
+### Example Error Response
+```json
+{
+  "errors": [
+    {
+      "msg": "Invalid Email",
+      "path": "email",
+      "location": "body"
+    }
+  ]
+}
+```
