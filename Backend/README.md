@@ -284,17 +284,17 @@ The request body must be a JSON object in the following format:
 ```json
 {
   "fullname": {
-   "firstname": "Vatsal",
-      "lastname": "Chaturvedi"
+    "firstname": "Vatsal",
+    "lastname": "Chaturvedi"
   },
-     "email": "vatsal123@gmail.com",
-    "password": "vatsal212",
-    "status": "inactive",
-    "vehicle": {
-      "color": "black",
-      "plate": "UP 24 AZ 6204",
-      "capacity": "1",
-      "vehicleType": "car"
+  "email": "vatsal123@gmail.com",
+  "password": "vatsal212",
+  "status": "inactive",
+  "vehicle": {
+    "color": "black",
+    "plate": "UP 24 AZ 6204",
+    "capacity": "1",
+    "vehicleType": "car"
   }
 }
 ```
@@ -384,5 +384,180 @@ curl -X POST http://localhost:4000/captains/register \
       "location": "body"
     }
   ]
+}
+```
+
+## Captain Login Endpoint
+
+### Endpoint
+`POST /captains/login`
+
+### Description
+This endpoint authenticates an existing captain by validating the email and password. If the credentials are correct, it returns a JWT token and the captain details.
+
+### Request Method
+`POST`
+
+### Status Codes
+- `200 OK` — Captain successfully logged in.
+- `400 Bad Request` — Validation failed or required fields are missing/invalid.
+- `401 Unauthorized` — Invalid email or password.
+- `500 Internal Server Error` — Server error while processing the request.
+
+### Request Body Format
+```json
+{
+  "email": "rahul@example.com",
+  "password": "123456"
+}
+```
+
+### Required Data
+- `email` — Required
+  - Must be a valid email address
+- `password` — Required
+  - Minimum length: `6` characters
+
+### Validation Rules
+- `email` must be a valid email format.
+- `password` must be at least 6 characters long.
+
+### Example Request
+```bash
+curl -X POST http://localhost:4000/captains/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "rahul@example.com",
+    "password": "123456"
+  }'
+```
+
+### Example Success Response
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "captain": {
+    "_id": "64c8f7d3c9f1a2b3d4e5f6g7",
+    "fullname": {
+      "firstname": "Rahul",
+      "lastname": "Sharma"
+    },
+    "email": "rahul@example.com",
+    "password": "$2b$10$...",
+    "status": "inactive",
+    "vehicle": {
+      "color": "Black",
+      "plate": "DL01AB1234",
+      "capacity": 4,
+      "vehicleType": "car"
+    }
+  }
+}
+```
+
+### Example Error Response
+```json
+{
+  "message": "Invalid email or password"
+}
+```
+
+## Captain Profile Endpoint
+
+### Endpoint
+`GET /captains/profile`
+
+### Description
+This endpoint returns the authenticated captain's profile information. It requires a valid JWT token passed either in the cookie `token` or in the `Authorization` header as a Bearer token.
+
+### Request Method
+`GET`
+
+### Status Codes
+- `200 OK` — Captain profile returned successfully.
+- `401 Unauthorized` — Token is missing, invalid, or blacklisted.
+- `500 Internal Server Error` — Server error while processing the request.
+
+### Authentication
+Use a valid JWT token in either of these formats:
+
+```http
+Cookie: token=YOUR_JWT_TOKEN
+```
+
+```http
+Authorization: Bearer YOUR_JWT_TOKEN
+```
+
+### Example Request
+```bash
+curl -X GET http://localhost:4000/captains/profile \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN"
+```
+
+### Example Success Response
+```json
+{
+  "captain": {
+    "_id": "64c8f7d3c9f1a2b3d4e5f6g7",
+    "fullname": {
+      "firstname": "Rahul",
+      "lastname": "Sharma"
+    },
+    "email": "rahul@example.com",
+    "status": "inactive",
+    "vehicle": {
+      "color": "Black",
+      "plate": "DL01AB1234",
+      "capacity": 4,
+      "vehicleType": "car"
+    }
+  }
+}
+```
+
+### Example Error Response
+```json
+{
+  "message": "Unauthorized"
+}
+```
+
+## Captain Logout Endpoint
+
+### Endpoint
+`GET /captains/logout`
+
+### Description
+This endpoint logs the captain out by clearing the cookie and storing the active JWT token in the blacklist so it cannot be reused.
+
+### Request Method
+`GET`
+
+### Status Codes
+- `200 OK` — Captain successfully logged out.
+- `401 Unauthorized` — Token is missing or invalid.
+- `500 Internal Server Error` — Server error while processing the request.
+
+### Authentication
+The captain must be logged in and send a valid JWT token in either the cookie or the `Authorization` header.
+
+### Example Request
+```bash
+curl -X GET http://localhost:4000/captains/logout \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN"
+```
+
+### Example Success Response
+```json
+{
+  "message": "Logout successFull"
+}
+```
+
+### Example Error Response
+```json
+{
+  "message": "Unauthorized"
 }
 ```
