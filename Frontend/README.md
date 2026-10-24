@@ -1,16 +1,103 @@
-# React + Vite
+# RideX Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+This is the frontend part of the RideX project.
+It is built with React and Vite.
 
-Currently, two official plugins are available:
+The app starts from the home screen and then lets users go to:
+- User login
+- User signup
+- Captain login
+- Captain signup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+It is a simple front-end flow for a ride-sharing app.
 
-## React Compiler
+## Tech Used
+- React
+- Vite
+- React Router DOM
+- JavaScript
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Screenshots
 
-## Expanding the Oxlint configuration
+### Home Screen
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+![RideX Home Screen](src/assets/HomePage.png)
+
+This is the landing screen of the RideX app. It shows the branded background, logo, and a start card with the call-to-action button.
+
+## Folder Structure
+
+```text
+Frontend/
+├── public/
+├── src/
+│   ├── assets/
+│   ├── Pages/
+│   ├── App.jsx
+│   ├── main.jsx
+│   ├── index.css
+│   └── App.css
+├── index.html
+├── package.json
+├── vite.config.js
+└── README.md
+```
+
+## How the App Works (End to End)
+
+1. User opens the app.
+2. `main.jsx` loads the app and wraps it with `BrowserRouter`.
+3. `App.jsx` decides which page to show based on the URL.
+4. Routes are:
+   - `/` -> Home page
+   - `/user/login` -> User login
+   - `/user/signup` -> User signup
+   - `/captain/login` -> Captain login
+   - `/captain/signup` -> Captain signup
+5. Each page contains the UI for that section.
+6. Later, this frontend connects with the backend APIs for login, signup, and ride features.
+
+## Start the Project
+
+Open terminal in the `Frontend` folder and run:
+
+```bash
+npm install
+npm run dev
+```
+
+Then open the browser and visit:
+
+```text
+http://localhost:5173
+```
+
+## Build for Production
+
+```bash
+npm run build
+```
+
+This creates the production files for deployment.
+
+## Simple Flow Example
+
+```text
+Open app
+-> Home page
+-> Click Continue
+-> Go to login/signup page
+-> Enter details
+-> Backend verifies user/captain
+-> App proceeds to next screen
+```
+
+## Notes
+
+- The login/signup pages are UI pages for now.
+- Real backend APIs will be connected later.
+- This project is the front-end layer of the RideX application.
+
+## Summary
+
+RideX Frontend is the user interface of the ride-sharing app. It handles the home page and user/captain login and signup screens, and it routes users between pages using React Router.
