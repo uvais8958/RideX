@@ -1,5 +1,5 @@
 import React from 'react'
-import homeImage from '../assets/HomeImage.avif'
+import homeImage from '../assets/screenShorts/backgorund.jpg'
 import {Link} from 'react-router-dom';
 
 const Home = () => {
@@ -10,8 +10,8 @@ const Home = () => {
     >
       <div className="min-h-screen w-full bg-black/20 flex flex-col justify-between px-0 py-8">
         <img
-          className="w-43 ml-9"
-          src="https://ridex.mv/assets/ridex/logo-black.png"
+          className="w-17 h-17  rounded-full ml-5 bg-transparent"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYmpJmbk2wqQbuNMY9HE0AufgSHWliBHoMbwEod06kZw&s=10"
           alt="RideX"
         />
 

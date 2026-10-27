@@ -1,0 +1,86 @@
+// {
+//   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YWRhZjc1NDQ4YWQyMDQxMTYzYWY5NjciLCJpYXQiOjE3OTI3MzUwNjAsImV4cCI6MTc5MjgyMTQ2MH0.GTJH1izoi1atdOHkM7rlkxkmZkGlMlfW6eTupdYuJY0",
+//   "captain": {
+//     "fullname": {
+//       "firstname": "Vatsal",
+//       "lastname": "Chaturvedi"
+//     },
+//     "email": "vatsal123@gmail.com",
+//     "password": "$2b$10$4Il2lAFLur57SD.qT163f.0lbaTp1MUx47TZHIcUVkwPALx8XLh1S",
+//     "status": "inactive",
+//     "vehicle": {
+//       "color": "black",
+//       "plate": "UP 24 AZ 6204",
+//       "capacity": "1",
+//       "vehicleType": "car"
+//     },
+//     "_id": "6adaf75448ad2041163af967",
+//     "__v": 0
+//   }
+// },
+
+
+
+
+// {
+//  "fullname": {
+//       "firstname": "Uvais",
+//       "lastname": "Ansari"
+//     },
+//     "email": "Uvais123@gmail.com",
+//     "password": "helloUvais",
+//     "status": "inactive",
+//     "vehicle": {
+//       "color": "black",
+//       "plate": "UP 24 AZ 6204",
+//       "capacity": "1",
+//       "vehicleType": "car"
+//     }
+// }
+
+
+{
+ "fullname": {
+      "firstname": "Junaid",
+      "lastname": "Ansari"
+    },
+    "email": "junaid123@gmail.com",
+    "password": "helloUvais",
+    "status": "inactive",
+    "vehicle": {
+      "color": "black",
+      "plate": "UP 24 AZ 6204",
+      "capacity": "1",
+      "vehicleType": "car"
+    }
+}
+
+
+
+
+
+
+
+
+
+
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YWRjMzgwMjAwZjVkMThkNGNhY2FmYjQiLCJpYXQiOjE3OTI4MTcxNTQsImV4cCI6MTc5MjkwMzU1NH0.gnuQNSi7Ckf9lVUadmNx9IgpjKXpZGFQxfEAd4c_tzY",
+  "captain": {
+    "fullname": {
+      "firstname": "Junaid",
+      "lastname": "Ansari"
+    },
+    "email": "junaid123@gmail.com",
+    "password": "$2b$10$NPStwCcwagIJz6QV0Vgj4O1sXWKsUO97mExbCU/9qLAWDSdfgHBoC",
+    "status": "inactive",
+    "vehicle": {
+      "color": "black",
+      "plate": "UP 24 AZ 6204",
+      "capacity": "1",
+      "vehicleType": "car"
+    },
+    "_id": "6adc380200f5d18d4cacafb4",
+    "__v": 0
+  }
+}

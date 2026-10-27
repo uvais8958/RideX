@@ -17,33 +17,26 @@ const [userData,setUserData]=useState({})
   
 const submitHandler=(e)=>{
     e.preventDefault()
-      
-    
-    setUserData({
-    
+
+    const newUserData = {
       fullname:{
-
         firstName:firstName,
-
         lastName:lastName
-
       },
-    
-        email:email,
-    
-        password:password
-    
-      })
+      email:email,
+      password:password
+    }
 
-      console.log(userData);
+    setUserData(newUserData)
+    console.log('Submitted Data:', newUserData)
+
+    setEmail('')
     
-      setEmail('')
+    SetPassword('')
     
-      SetPassword('')
+    setFirstName('')
     
-      setFirstName('')
-    
-      SetLastName('')
+    SetLastName('')
 
   }
 
@@ -58,7 +51,7 @@ const submitHandler=(e)=>{
 
                <img
           className="w-37 mb-3"
-          src="https://ridex.mv/assets/ridex/logo-black.png"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYmpJmbk2wqQbuNMY9HE0AufgSHWliBHoMbwEod06kZw&s=10"
           alt="RideX"
 
 
@@ -119,13 +112,13 @@ const submitHandler=(e)=>{
           Loigin</button>
       
       </form>
-      <p className='text-center'>Already have a account?<Link to="/login" className='mb-5 text-blue-400'> Login here</Link></p>
+        <p className='text-center'>Already have a account? <Link to='/login' className='text-blue-600'>Login here</Link></p>
 
              </div>
 
              <div>
             <p className='text-[10px] leading-tight '>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim, nihil? Voluptatum in accusantium, earum architecto quia soluta quisquam quis doloremque nobis dolore nisi quos debitis pariatur error dolorem, facilis aliquam?
+            This site is protected by recaptched by reCAPTHCA and the <span className='underline'>Google Privacy</span> policy and <span className='underline'>terms of services</span> applyi.
             </p>
              </div>
     </div>

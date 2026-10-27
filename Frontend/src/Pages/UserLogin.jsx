@@ -23,7 +23,7 @@ const UserLogin = () => {
          <div>
                <img
           className="w-37 mb-3"
-          src="https://ridex.mv/assets/ridex/logo-black.png"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYmpJmbk2wqQbuNMY9HE0AufgSHWliBHoMbwEod06kZw&s=10"
           alt="RideX"
         />
       <form onSubmit={(e)=>{
@@ -48,14 +48,14 @@ const UserLogin = () => {
         'bg-[#111] text-white font-semibold cursor-pointer mb-3 rounded px-4 py-2 border w-full text-lg placeholder:text-base '>
           Loigin</button>
       </form>
-      <p className='text-center'>New here?<Link to="/signup" className='text-blue-400'> Create a new Account</Link></p>
-
+      <p className='text-center'>New here? <Link to='/signup' className='text-blue-600'>Create new Account</Link></p>
              </div>
 
              <div>
-              <Link to="/captain-signup" className='flex items-center justify-center bg-[#10b461] text-white font-semibold cursor-pointer mb-7 rounded px-4 py-2 border w-full text-lg placeholder:text-base '>
-                Sign in as Captain
-              </Link>
+             <Link
+          to='/captain-login'
+          className='bg-[#10b461] flex items-center justify-center text-white font-semibold mb-5 rounded-lg px-4 py-2 w-full text-lg placeholder:text-base'
+        >Sign in as Captain</Link>
              </div>
     </div>
   )
