@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import {CaptainDataContext} from"../context/CaptainContext"
 
 
 const CaptainSignup = () => {
@@ -24,6 +25,7 @@ const CaptainSignup = () => {
       },
       email: email,
       password: password,
+      
       vehicle: {
         color: vehicleColor,
         plate: vehiclePlate,

@@ -3,11 +3,13 @@ import {Routes,Route} from 'react-router-dom';
 import Start from './Pages/Start'
 import UserLogin from './Pages/UserLogin';
 import UserSignup from './Pages/UserSignup';
+import UserLogout from './Pages/UserLogout';
 import CaptainLogin from './Pages/CaptainLogin';
 import CaptainSignup from './Pages/CaptainSignup';
 import Home from './Pages/Home';
 
 import { UserDataContext } from './context/UserContext';
+import UserProtectWrapper from './Pages/UserProtectWrapper';
 
 const App = () => {
  const ans= useContext(UserDataContext)
@@ -20,7 +22,16 @@ const App = () => {
         <Route path="/signup" element={<UserSignup />} />
         <Route path="/captain-login" element={<CaptainLogin />} />
         <Route path="/captain-signup" element={<CaptainSignup />} />
-        <Route parh=  "/home" element={<Home/>}/>
+        <Route path=  "/home" element={
+         < UserProtectWrapper>
+         <Home/>
+         </UserProtectWrapper>
+        }/>
+        <Route path='/user/logout' element={
+          <UserProtectWrapper>
+            <UserLogout/>
+          </UserProtectWrapper>
+        }/>
 
       </Routes>
     </div>

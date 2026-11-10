@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
-import { useState,useNavigate } from 'react'
+import { Link,useNavigate } from 'react-router-dom'
+import { useState, } from 'react'
 import axios from 'axios'
 import {UserDataContext} from '../context/UserContext'
 
@@ -28,19 +28,29 @@ const submitHandler= async (e)=>{
 
     const newUser = {
       fullname:{
-        firstnaame:firstName,
-        lastnaame:lastName
+        firstname:firstName,
+        lastname:lastName
       },
       email:email,
       password:password
     }
-    const response=await axios.post(`${import.meta.env.VITE_BASE_URL}/users/register`,newUser)
-    if(response.status===2001){
+
+  
+    try{
+      const response=await axios.post(`${import.meta.env.VITE_BASE_URL}/users/register`,newUser)
+  
+      if(response.status === 201){
       const data=response.data
       setUser(data.user)
+      localStorage.setItem('token',data.token)
       navigate("/home")
 
     }
+
+  
+  }catch(error){
+    console.error(`Error during Register user ${error}`);
+  }
 
     setUserData(newUser);
     console.log('Submitted Data:',userData);
