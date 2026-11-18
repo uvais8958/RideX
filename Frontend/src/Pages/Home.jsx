@@ -2,13 +2,15 @@ import React, { useRef, useState } from 'react'
 // import {useGsap} from'@gsap/react'
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap'
-
+import  {RiArrowDownSLine}  from"@remixicon/react";
+import LocationSearchPanel from '../components/LOcationSearchPanel';
 const Home = () => {
 
   const [pickup,setPickup]=useState('')
   const [destination,setDestination]=useState('')
   const [panelOpen,setPanelOpen]=useState(false)
   const panelRef=useRef(null)
+  const penelCloseRef =useRef(null)
 
   const  submitHandler=()=>{
    e.preventDedault()  
@@ -17,11 +19,20 @@ const Home = () => {
  useGSAP(function(){
    if(panelOpen){
        gsap.to(panelRef.current,{
-      height:'70%'
+      height:'70%',
+      padding:24
+    })
+
+    gsap.to(penelCloseRef.current,{
+      opacity:1
     })
    }else{
      gsap.to(panelRef.current,{
-      height:'0'
+      height:'0%',
+      padding:0
+    })
+    gsap.to(penelCloseRef.current,{
+      opacity:0
     })
    }
   },[panelOpen])
@@ -37,7 +48,13 @@ const Home = () => {
 
 
   <div className='flex flex-col justify-end h-screen  absolute top-0  w-full '>
-     <div className='h-[30%] p-5 bg-white relative'>
+     <div className='h-[30%] p-6 bg-white relative'>
+     
+      <h5 ref={penelCloseRef} onClick={()=>{
+        setPanelOpen(false)
+      }} className='absolute right-6 top-6 text-2xl'><RiArrowDownSLine /></h5>
+     
+     
       <h4 className='text-2xl font-semibold'>Find a trip</h4>
            <form onSubmit={(e)=>{
             submitHandler(e)
@@ -71,8 +88,8 @@ const Home = () => {
     </form>
 </div>
     
-       <div ref={panelRef} className='bg-red-600 h-0'>
- 
+       <div ref={panelRef} className='bg-gray-200 h-0'>
+               <LocationSearchPanel/>
        </div>
    </div>
       </>
