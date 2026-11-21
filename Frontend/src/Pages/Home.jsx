@@ -10,7 +10,9 @@ const Home = () => {
   const [destination,setDestination]=useState('')
   const [panelOpen,setPanelOpen]=useState(false)
   const panelRef=useRef(null)
+  const vehiclePanelRef=useRef(null)
   const penelCloseRef =useRef(null)
+  const [vehiclePanel,setVehiclePanel]=useState(false);
 
   const  submitHandler=()=>{
    e.preventDedault()  
@@ -36,6 +38,19 @@ const Home = () => {
     })
    }
   },[panelOpen])
+
+
+  useGSAP(function(){
+   if(vehiclePanel){
+     gsap.to(vehiclePanelRef.current,{
+      transform:'translateY(0)'
+    })
+   }else{
+     gsap.to(vehiclePanelRef.current,{
+      transform:'translateY(100%)'
+    })
+   }
+  },[vehiclePanel])
   return (
     <>
     <div className='h-screen relative overflow-hidden'>
@@ -60,7 +75,7 @@ const Home = () => {
             submitHandler(e)
            }}>
 
-           <div className="line absolute h-16 w-1 top-[50%] -translate-y-1/2 left-5 bg-gray-700 rounded-full"></div>
+           <div className="line absolute h-20 w-1 top-[25%]  overflow-hidden ml-8  bg-gray-700 rounded-xl"></div>
 
       <input className='bg-[#eee] px-12 py-2 text-lg rounded-lg w-full mt-5' 
          onClick={()=>{
@@ -89,11 +104,11 @@ const Home = () => {
 </div>
     
        <div ref={panelRef} className='bg-gray-200 h-0'>
-               <LocationSearchPanel/>
+               <LocationSearchPanel  vehiclePanel={vehiclePanel} setVehiclePanel={setVehiclePanel}/>
        </div>
 
 
-       <div className='fixed  z-10 w-full bg-white bottom-0 px-3 py-6 '>
+       <div ref={vehiclePanelRef} className='fixed  z-10 w-full translate-y-full bg-white bottom-0 px-3 py-8 '>
 
            <h3 className='text-2xl font-semibold mb-5'>Choose a vehicle</h3>
 
