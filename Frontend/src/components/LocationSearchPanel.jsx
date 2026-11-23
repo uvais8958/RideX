@@ -15,8 +15,8 @@ const LocationSearchPanel = (props) => {
       {/* this is just a sample data */}
     
           {
-            locations.map((elem)=>{
-               return   <div onClick={()=>{
+            locations.map((elem) => {
+               return <div key={elem} onClick={() => {
                 props.setVehiclePanel(true)
                }} className='flex gap-4  cursor-pointer border-2 p-3 border-gray-400 active:border-black rounded-xl items-center my-2 justify-start'>
           <h2 className='bg-[#eee] h-8 flex items-center justify-center w-16 rounded-full '> <RiMapPin2Fill /></h2>
