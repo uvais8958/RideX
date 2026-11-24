@@ -1,5 +1,4 @@
-import React, { useRef, useState } from 'react'
-// import {useGsap} from'@gsap/react'
+import { useRef, useState } from 'react'
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap'
 import  {RiArrowDownSLine}  from"@remixicon/react";
@@ -57,16 +56,17 @@ const Home = () => {
   },[vehiclePanel])
 
 
-    useGSAP(function(){
-   if(confirmRidePanel){
-     gsap.to(confirmRidePanelRef.current,{
-      transform:'translateY(0)'
-    })
-   }else{
-     gsap.to(confirmRidePanelRef.current,{
+  useGSAP(function(){
+    if(confirmRidePanel){
+      gsap.to(confirmRidePanelRef.current,{
+        transform:'translateY(0)'
+      })
+    }
+    else{
+    gsap.to(confirmRidePanelRef.current,{
       transform:'translateY(100%)'
     })
-   }
+    }
   },[confirmRidePanel])
 
 
@@ -128,11 +128,11 @@ const Home = () => {
        </div>
 
 
-       <div ref={vehiclePanelRef} className='fixed  z-10 w-full translate-y-full bg-white bottom-0 px-3 py-10 pt-14 '>
+       <div ref={vehiclePanelRef} className='fixed  z-10 w-full translate-y-full bg-white bottom-0 px-3 py-10 pt-12 '>
             <VehiclePanel setConfirmRidePanel={setConfirmRidePanel} setVehiclePanel={setVehiclePanel}/>
        </div>
 
-          <div ref={confirmRidePanel} className='fixed  z-10 w-full translate-y-full bg-white bottom-0 px-3 py-10 pt-14 '>
+          <div ref={confirmRidePanelRef} className='fixed  z-10 w-full translate-y-full bg-white bottom-0 px-3 py-6 pt-12 '>
             <ConfirmedRide />
        </div>
 

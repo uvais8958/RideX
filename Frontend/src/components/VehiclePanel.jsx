@@ -1,5 +1,5 @@
 import React from 'react'
-import  {RiArrowDownSLine , RiUserLine ,RiArrowDownWideLine, RiMoneyRupeeCircleLine}  from"@remixicon/react";
+import  { RiUserLine ,RiArrowDownWideLine, RiMoneyRupeeCircleLine}  from"@remixicon/react";
 const VehiclePanel = (props) => {
   return (
     <div>
