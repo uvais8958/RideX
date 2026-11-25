@@ -5,7 +5,7 @@ const ConfirmedRide = (props) => {
   return (
     <div>
         <h5 className='p-1 text-center w-[93%] absolute top-0' onClick={()=>{
-             props.setVehiclePanel(false)
+             props.setVehicleFound(false)
         }}>< RiArrowDownWideLine /></h5>
         <h3 className='text-2xl font-semibold mb-5'>Confirm Your Ride</h3>
              
@@ -39,20 +39,17 @@ const ConfirmedRide = (props) => {
 
                <div className='flex text-lg items-center gap-5 p-3'>
                    
-                      <RiBankCardLine />
+                      <RiBankCardLine /> 
                 <div>
-                   <h3 className='text-lg font-medium flex mb-1 justify-center items-center p-1 '><div className='flex items-center justify-center gap-5 mt-3'><RiMoneyRupeeCircleLine /></div>193.00</h3>
+                   <h3 className='text-lg font-medium flex mb-1 justify-center items-center p-1 '><div className='flex items-center justify-center gap-5 '><RiMoneyRupeeCircleLine /></div>193.00</h3>
                   <p className='text-sm -mt-1 text-gray-500'>Cash Cash</p>
                 </div>
-
-
                </div>
-               
-               
-               
-               
-              </div>
-              <button className='mt-5 bg-green-500 w-full text-white font-semibold p-2 rounded-lg'>Confirm</button>
+               </div>
+              <button onClick={()=>{
+                props.setVehicleFound(true)
+                props.setConfirmRidePanel(false)
+              }} className='mt-5 bg-green-500 w-full text-white font-semibold p-2 rounded-lg'>Confirm</button>
               </div>
     </div>
   )
