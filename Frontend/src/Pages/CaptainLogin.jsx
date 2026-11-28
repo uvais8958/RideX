@@ -28,7 +28,7 @@ const Captainlogin = () => {
         const data = response.data
         setCaptain(data.captain)
         localStorage.setItem('token', data.token)
-        navigate('/home')
+        navigate('/captain-home')
       }
     } catch (error) {
       console.error('Captain login failed:', error.response?.data || error.message)
